@@ -7,14 +7,16 @@ import { BlogsModule } from './blogs/blogs.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'dpg-d2rd4nadbo4c73d5uj90-a',
-      port: 5432,
-      username: 'sorbifer',
-      password: 'ijADFKEjzIS6AXXqV58zp2nbY9w0EPMY',
-      database: 'sorbifer',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
     }),
