@@ -16,7 +16,7 @@ import { BlogsModule } from './blogs/blogs.module';
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   ssl: {
-    rejectUnauthorized: false, // Render için genelde böyle
+    rejectUnauthorized: false, 
   },
   autoLoadEntities: true,
   synchronize: true // prod’da false yapmayı unutma
