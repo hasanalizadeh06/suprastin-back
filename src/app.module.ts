@@ -12,12 +12,19 @@ import { BlogsModule } from './blogs/blogs.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      host: "dpg-d36k12umcj7s73dllo90-a.frankfurt-postgres.render.com",
+      port: 5432,
+      username: "admin",
+      password: "suprastindb",
+      database: "sFaR8aeAtzLa5tP3Ag2ItuWxfEodsFde",
       autoLoadEntities: true,
+
+      
+      
+      
+      
+      
+
       synchronize: true,
       ssl: {
         rejectUnauthorized: false,
