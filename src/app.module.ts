@@ -19,6 +19,9 @@ import { BlogsModule } from './blogs/blogs.module';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     AuthModule,
     UsersModule,
