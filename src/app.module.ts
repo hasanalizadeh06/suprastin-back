@@ -8,20 +8,16 @@ import { BlogsModule } from './blogs/blogs.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-   TypeOrmModule.forRoot({
-  type: 'postgres',
-  host: process.env.DB_HOST,
-  port: +(process.env.DB_PORT ?? 5432),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  ssl: {
-    rejectUnauthorized: false, 
-  },
-  autoLoadEntities: true,
-  synchronize: true // prod’da false yapmayı unutma
-}),
-
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'dpg-d2rd4nadbo4c73d5uj90-a',
+      port: 5432,
+      username: 'sorbifer',
+      password: 'ijADFKEjzIS6AXXqV58zp2nbY9w0EPMY',
+      database: 'sorbifer',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
     AuthModule,
     UsersModule,
     BlogsModule

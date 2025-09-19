@@ -41,22 +41,20 @@ import { S3Service } from '../s3/s3.service';
 				properties: {
 					  content: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
 					  title: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
-                  description: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
 					images: {
 						type: 'array',
 						items: { type: 'string', format: 'binary' },
 					},
 				},
-            required: ['content', 'images', 'title', 'description'],
+			required: ['content', 'images', 'title'],
 			},
 		})
 		async createBlog(
 			@Body('content') content: { ru: string; az: string },
 			@Body('title') title: { ru: string; az: string },
-            @Body('description') description: { ru: string; az: string },
 			@UploadedFiles() images: any[],
 		): Promise<Blog> {
-        return this.blogsService.createBlog(content, images, title, description);
+		return this.blogsService.createBlog(content, images, title);
 		}
 
 		@Get()
@@ -78,24 +76,20 @@ import { S3Service } from '../s3/s3.service';
 				type: 'object',
 				properties: {
 					  content: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
-                  title: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
-                  description: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
 					images: {
 						type: 'array',
 						items: { type: 'string', format: 'binary' },
 					},
 				},
-            required: ['content', 'images', 'title', 'description'],
+			required: ['content', 'images'],
 			},
 		})
 		async updateBlog(
 			@Param('id') id: string,
 			@Body('content') content: { ru: string; az: string },
-            @Body('title') title: { ru: string; az: string },
-            @Body('description') description: { ru: string; az: string },
 			@UploadedFiles() images: any[],
 		): Promise<Blog | undefined> {
-        return this.blogsService.updateBlog(id, content, images, title, description);
+			return this.blogsService.updateBlog(id, content, images);
 		}
 
 		@Delete(':id')

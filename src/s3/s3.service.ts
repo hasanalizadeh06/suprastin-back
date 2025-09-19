@@ -56,7 +56,7 @@ export class S3Service {
       }
 
       const fileName = `${uuidv4()}.${fileExtension}`;
-      const key = `tasks/images/suprastin/${fileName}`;
+      const key = `tasks/images/sorbifer/${fileName}`;
 
       this.logger.log(`Uploading file with key: ${key}`);
       return await this.uploadObject(key, file.buffer);
