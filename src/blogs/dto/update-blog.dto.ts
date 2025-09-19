@@ -3,4 +3,5 @@ export class UpdateBlogDto {
   content?: { ru: string; az: string };
   description?: { ru: string; az: string };
   images?: string[];
+  
 }
