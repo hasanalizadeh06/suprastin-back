@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/00de92cf-7e9c-45e1-a6ab-7da8350096c7/resourceGroups/suprastinback_group/providers/Microsoft.Web/sites/suprastinback",
+    "appService.deploySubpath": "."
+}
