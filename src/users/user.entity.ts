@@ -19,5 +19,4 @@ export class User {
     default: null
   })
   photo?: string;
-
 }
