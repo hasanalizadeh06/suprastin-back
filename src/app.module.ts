@@ -18,13 +18,6 @@ import { BlogsModule } from './blogs/blogs.module';
       password: "suprastindb",
       database: "sFaR8aeAtzLa5tP3Ag2ItuWxfEodsFde",
       autoLoadEntities: true,
-
-      
-      
-      
-      
-      
-
       synchronize: true,
       ssl: {
         rejectUnauthorized: false,
