@@ -17,6 +17,7 @@ async function bootstrap() {
   console.log("---data---")
   Logger.log(`Environment: ${process.env.NODE_ENV}`);
   console.log(process.env.PORT);
+  console.log('ENV DB_HOST:', process.env.DB_HOST);
   await app.listen(process.env.PORT || 80);
 }
 bootstrap();

@@ -7,30 +7,31 @@ import { BlogsModule } from './blogs/blogs.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: "dpg-d36k12umcj7s73dllo90-a.frankfurt-postgres.render.com",
-      port: 5432,
-      username: "admin",
-      password: "suprastindb",
-      database: "sFaR8aeAtzLa5tP3Ag2ItuWxfEodsFde",
-      autoLoadEntities: true,
-      synchronize: true,
-      ssl: {
-        rejectUnauthorized: false,
-      },
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: 'postgres',
+        host: 'dpg-d37b5gur433s73ejiq00-a.oregon-postgres.render.com',
+        port: 5432,
+        username: 'suprastin_db',
+        password: 'BjB6HCRS61yEd0duQquMosm99ELwmaaa',
+        database: 'suprastin_db',
+        autoLoadEntities: true,
+        synchronize: true,
+        ssl: true,
+        extra: {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        },
+        logging: true,
+      }),
     }),
     AuthModule,
     UsersModule,
-    BlogsModule
+    BlogsModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
-
-
-
