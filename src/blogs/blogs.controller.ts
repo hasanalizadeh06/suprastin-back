@@ -39,8 +39,9 @@ import { S3Service } from '../s3/s3.service';
 			schema: {
 				type: 'object',
 				properties: {
-					  content: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
-					  title: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
+					content: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
+					title: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
+					description: { type: 'object', properties: { ru: { type: 'string' }, az: { type: 'string' } } },
 					images: {
 						type: 'array',
 						items: { type: 'string', format: 'binary' },
@@ -52,9 +53,10 @@ import { S3Service } from '../s3/s3.service';
 		async createBlog(
 			@Body('content') content: { ru: string; az: string },
 			@Body('title') title: { ru: string; az: string },
+			@Body('description') description: { ru: string; az: string },
 			@UploadedFiles() images: any[],
 		): Promise<Blog> {
-		return this.blogsService.createBlog(content, images, title);
+			return this.blogsService.createBlog(content, images, title, description);
 		}
 
 		@Get()
@@ -87,9 +89,10 @@ import { S3Service } from '../s3/s3.service';
 		async updateBlog(
 			@Param('id') id: string,
 			@Body('content') content: { ru: string; az: string },
+			@Body('description') description: { ru: string; az: string },
 			@UploadedFiles() images: any[],
 		): Promise<Blog | undefined> {
-			return this.blogsService.updateBlog(id, content, images);
+			return this.blogsService.updateBlog(id, content, description, images);
 		}
 
 		@Delete(':id')

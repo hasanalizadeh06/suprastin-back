@@ -5,8 +5,6 @@ export class Blog {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-
-
   @Column('simple-json')
   title: { ru: string; az: string };
 
@@ -16,6 +14,9 @@ export class Blog {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
+
+  @Column('simple-json', { nullable: true })
+  description: { ru: string; az: string };
 
   @Column('simple-array')
   images: string[]; // S3 URL'leri

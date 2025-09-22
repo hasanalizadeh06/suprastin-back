@@ -17,11 +17,12 @@ export class BlogsService {
     content: { ru: string; az: string },
     images: any[],
     title: { ru: string; az: string },
+    description: { ru: string; az: string },
   ): Promise<Blog> {
     const imageUrls = await Promise.all(
       images.map(async (file) => await this.s3Service.uploadFile(file)),
     );
-    const blog = this.blogsRepository.create({ content, images: imageUrls, title });
+    const blog = this.blogsRepository.create({ content, images: imageUrls, title, description });
     return this.blogsRepository.save(blog);
   }
 
@@ -37,11 +38,13 @@ export class BlogsService {
   async updateBlog(
     id: string,
     content: { ru: string; az: string },
+    description: { ru: string; az: string },
     images: any[],
   ): Promise<Blog | undefined> {
     const blog = await this.blogsRepository.findOne({ where: { id } });
     if (!blog) return undefined;
     blog.content = content;
+    blog.description = description;
     if (images && images.length > 0) {
       const imageUrls = await Promise.all(
         images.map(async (file) => await this.s3Service.uploadFile(file)),
