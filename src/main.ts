@@ -5,7 +5,14 @@ import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: [
+      'http://localhost:3001',
+      'https://suprastin.vercel.app',
+    ],
+    credentials: true,
+    methods: '*',
+  });
   const config = new DocumentBuilder()
     .setTitle('Your API')
     .setDescription('API description')
